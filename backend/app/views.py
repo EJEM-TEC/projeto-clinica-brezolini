@@ -282,19 +282,27 @@ def cadastrar_paciente(request):
         pacientes = Paciente.objects.all()
         return render(request, 'frontend/cadastrar_paciente.html', {'pacientes': pacientes})
     else:
-        try:
-            # Pegando os dados do formulário
+        
+            # Campos obrigatórios
             nome = request.POST.get('nome')
             genero = request.POST.get('genero')
             data_cadastro = request.POST.get('data_cadastro')
             data_nascimento = request.POST.get('data_nascimento')
-            observacoes = request.POST.get('observaçoes')
+            celular = request.POST.get('celular')
+            email = request.POST.get('email')
+            data_cadastro = datetime.strptime(data_cadastro, "%Y-%m-%d").date()
+            data_nascimento = datetime.strptime(data_nascimento, "%Y-%m-%d").date()
+
+            # Verificar se os campos obrigatórios estão preenchidos
+            if not all([nome, genero, data_cadastro, data_nascimento, celular, email]):
+                raise ValidationError("Todos os campos obrigatórios (*) devem ser preenchidos.")
+
+            # Campos opcionais
+            observacoes = request.POST.get('observacoes')
             local_nascimento = request.POST.get('local_nascimento')
             estado_civil = request.POST.get('estado_civil')
             grupo = request.POST.get('grupo')
             situacao_atual = request.POST.get('situacao_atual')
-            celular = request.POST.get('celular')
-            email = request.POST.get('email')
             cep = request.POST.get('cep')
             endereco = request.POST.get('endereço')
             numero = request.POST.get('numero')
@@ -307,7 +315,14 @@ def cadastrar_paciente(request):
             orgao_emissor = request.POST.get('orgao_emissor')
             convenio = request.POST.get('convénio')
             plano = request.POST.get('plano')
-            data_adesao = request.POST.get('data_adesao')
+            data_adesao = request.POST.get('data_adesao', '').strip()
+            if data_adesao:
+                try:
+                    data_adesao = datetime.strptime(data_adesao, "%Y-%m-%d").date()
+                except ValueError:
+                    raise ValidationError("Data de adesão inválida. Use o formato DD-MM-YYYY.")
+            else:
+                data_adesao = None
             nome_pai = request.POST.get('nome_pai')
             cpf_pai = request.POST.get('cpf_pai')
             rg_pai = request.POST.get('rg_pai')
@@ -316,7 +331,7 @@ def cadastrar_paciente(request):
             cpf_mae = request.POST.get('cpf_mae')
             rg_mae = request.POST.get('rg_mae')
             telefone_mae = request.POST.get('telefone_mae')
-            
+
             # Validando se o paciente já existe
             if Paciente.objects.filter(Nome=nome).exists():
                 raise ValidationError(f"Paciente com o nome {nome} já existe.")
@@ -357,13 +372,12 @@ def cadastrar_paciente(request):
                 Estado=estado
             )
             paciente.save()
-            
+
             # Mensagem de sucesso
             messages.success(request, "Paciente cadastrado com sucesso!")
             return redirect('cadastrar_paciente')  # Redirecionar para evitar reenvio do formulário
 
-        except:
-            return render(request, 'frontend/erro_validacao.html')
+        
 
         
     

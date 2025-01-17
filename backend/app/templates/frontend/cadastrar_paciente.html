@@ -182,7 +182,7 @@
                 <!-- Table with stripped rows -->
                 <div class="card">
                     <div class="card-body">
-                      <p>*Campos Obrigatorio</p>
+                      <p>*Campos Obrigatorios</p>
                       <h5 class="card-title">Cadastrar Paciente</h5>
         
                       <!-- General Form Elements -->
@@ -234,7 +234,7 @@
                           </div>
                         </div>                            
                         <div class="row mb-3">
-                          <label for="inputText" class="col-sm-2 col-form-label">Observações*</label>
+                          <label for="inputText" class="col-sm-2 col-form-label">Observações</label>
                           <div class="col-sm-10">
                             <textarea class="form-control" name="observaçoes" style="height: 100px"></textarea>
                           </div>
@@ -242,7 +242,7 @@
                         
                           
                           <div class="row mb-3">
-                            <label for="inputText" class="col-sm-2 col-form-label">Local de nascimento*</label>
+                            <label for="inputText" class="col-sm-2 col-form-label">Local de nascimento</label>
                             <div class="col-sm-10">
                               <input type="text" name="local_nascimento" class="form-control">
                             </div>
@@ -261,7 +261,7 @@
                             </div>
                           </div>
                           <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">Grupo*</label>
+                            <label class="col-sm-2 col-form-label">Grupo</label>
                             <div class="col-sm-10">
                               <select name="grupo" class="form-select" aria-label="Default select example">
                                 <option selected value="Definitivo">Definitivo</option>
@@ -273,7 +273,7 @@
                             </div>
                           </div>
                           <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">Situação atual*</label>
+                            <label class="col-sm-2 col-form-label">Situação atual</label>
                             <div class="col-sm-10">
                               <select class="form-select" name="situacao_atual" aria-label="Default select example">
                                 <option selected value="1ªConsulta">1ªConsulta</option>
@@ -312,16 +312,19 @@
                           <hr>
                           <h4 class="card-title">Contato</h4>
                           <div class="container mt-5">
-                              <div class="row mb-3">
-                                <div class="col-md-6">
-                                  <label for="celular" class="form-label">Celular*</label>
-                                  <input type="tel" name="celular" class="form-control" id="celular" placeholder="(XX) XXXXX-XXXX">
-                                </div>
-                                <div class="col-md-6">
-                                  <label for="email" class="form-label">Email*</label>
-                                  <input type="email" name="email" class="form-control" id="email" placeholder="email@example.com">
-                                </div>
+                            <div class="row mb-3">
+                              <label for="celular" class="col-sm-2 col-form-label">Celular*</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" name="celular" id="celular" required>
                               </div>
+                          </div>
+              
+                          <div class="row mb-3">
+                              <label for="email" class="col-sm-2 col-form-label">E-mail*</label>
+                              <div class="col-sm-10">
+                                  <input type="email" class="form-control" name="email" id="email" required>
+                              </div>
+                          </div>
                           </div>
                           <hr>
                           <h4 class="card-title">Endereço</h4>   
@@ -440,19 +443,19 @@
                             </div>
                           </div>
                           <div class="row mb-3">
-                            <label for="inputNumber" class="col-sm-2 col-form-label">RG*</label>
+                            <label for="inputNumber" class="col-sm-2 col-form-label">RG</label>
                             <div class="col-sm-10">
                               <input type="text" name="rg" class="form-control" placeholder="00.000.000-0">
                             </div>
                           </div>
                           <div class="row mb-3">
-                            <label for="inputText" class="col-sm-2 col-form-label">Órgão emissor*</label>
+                            <label for="inputText" class="col-sm-2 col-form-label">Órgão emissor</label>
                             <div class="col-sm-10">
                               <input type="text" name="orgao_emissor" class="form-control">
                             </div>
                           </div>
                           <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">Convénio*</label>
+                            <label class="col-sm-2 col-form-label">Convénio</label>
                             <div class="col-sm-10">
                               <select class="form-select" name="convénio" aria-label="Default select example">
                                 <option selected></option>
@@ -462,13 +465,13 @@
                             </div>
                           </div>
                           <div class="row mb-3">
-                            <label for="inputText" class="col-sm-2 col-form-label">Plano*</label>
+                            <label for="inputText" class="col-sm-2 col-form-label">Plano</label>
                             <div class="col-sm-10">
                               <input type="text" nama="plano" class="form-control">
                             </div>
                           </div>
                           <div class="row mb-3">
-                            <label for="inputDate" class="col-sm-2 col-form-label">Data de adesão*
+                            <label for="inputDate" class="col-sm-2 col-form-label">Data de adesão
                             </label>
                             <div class="col-sm-10">
                               <input type="date" name="data_adesao" class="form-control">
