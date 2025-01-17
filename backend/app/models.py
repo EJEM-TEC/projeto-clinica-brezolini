@@ -58,6 +58,8 @@ class Agendar(models.Model):
     cadeira=models.ForeignKey(Cadeira, on_delete=models.SET_NULL, null=True)
     confirmacao=models.CharField(max_length=100, blank=True, null=True)
 
+
+############################
 class EventAbstract(models.Model):
     """ Event abstract model """
 
@@ -132,6 +134,8 @@ class EventAbstract(models.Model):
 
     class Meta:
         abstract = True
+
+#####################################
 
 class Anotacao(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, related_name='anotacoes')

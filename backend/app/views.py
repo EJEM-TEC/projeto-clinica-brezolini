@@ -570,6 +570,8 @@ def calendario(request):
 
 
 
+
+#####################################
 @login_required(login_url="/")
 def get_date(req_day):
     if req_day:
@@ -788,6 +790,10 @@ class RunningEventsListView(ListView):
     @login_required(login_url="/")
     def get_queryset(self):
         return Event.objects.get_running_events(user=self.request.user)
+#####################################
+ 
+
+
 
 @login_required(login_url="/")
 def editar_paciente(request, paciente_id):
